@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+		table {
+			border-collapse: collapse;
+			}
+			table, td, th {
+			border: 1px solid black;
+			}
+		td {
+			width: 30px;
+			}
+		/* eliminate any browser defaults */
+		[contenteditable="true"]:active,
+		[contenteditable="true"]:focus{
+			border:none;
+			outline:none;
+			}
+    </style>
+</head>
+<body>
+	<table class="panel">
+	  <tr>
+		<td contenteditable="true">0</td>
+		<td contenteditable="true">0</td>
+		<td contenteditable="true">0</td>
+	  </tr> 
+	  <tr>
+		<td contenteditable="true">0</td>
+		<td contenteditable="true">0</td>
+		<td contenteditable="true">0</td>
+	  </tr> 
+	</table>
+    <script>
+		$("td").blur(function() {
+			$(this).attr("data-id", $(this).text());
+		})
+		$("td").focus(function() {
+			$(this).selectText();
+		})
+
+		$.fn.selectText = function(){
+			var doc = document;
+			var element = this[0];
+			if (doc.body.createTextRange) {
+				var range = document.body.createTextRange();
+				range.moveToElementText(element);
+				range.select();
+			} else if (window.getSelection) {
+				var selection = window.getSelection();        
+				var range = document.createRange();
+				range.selectNodeContents(element);
+				selection.removeAllRanges();
+				selection.addRange(range);
+			}
+		}     
+    </script>				
+</body>
+</html> 
