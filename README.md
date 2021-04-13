@@ -8,7 +8,7 @@ Ability to edit content and styles on a page.
 Typing into an input fields are make your websites slow.
 Use this method!
 
-# Technology review
+## Technology review
 HTML5 contenteditable, CSS, JQuery
 
 ## View in JSFiddle
